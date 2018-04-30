@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hou.xjw.mapper.ResourceMapper">
+    <resultMap id="BaseResultMap" type="com.hou.xjw.model.shiroPermission.Resource">
+        <id column="id" jdbcType="INTEGER" property="id" />
+        <result column="resource_name" jdbcType="VARCHAR" property="resourceName" />
+        <result column="resource_exp" jdbcType="VARCHAR" property="resourceExp" />
+        <result column="url" jdbcType="VARCHAR" property="url" />
+        <result column="type_id" jdbcType="TINYINT" property="typeId" />
+        <result column="parent_id" jdbcType="INTEGER" property="parentId" />
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+        <result column="op_user" jdbcType="VARCHAR" property="opUser" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+      id, resource_name, resource_exp, url, parent_id, create_time, update_time, op_user
+    </sql>
+
+    <select id="getResourceByRoleId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        SELECT
+        id, resource_name, resource_exp, url, parent_id, create_time, update_time, op_user
+        FROM mgmt_Resource
+        WHERE id
+        IN ( SELECT resource_id FROM mgmt_role_resource WHERE role_id = #{roleId} )
+    </select>
+    
+</mapper>

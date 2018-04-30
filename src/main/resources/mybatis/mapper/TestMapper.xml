@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hou.xjw.mapper.TestMapper">
+
+    <insert id="addQueryLog" parameterType="com.hou.xjw.model.test.TestQueryLog">
+        insert into xjw_test (id, req_addr, req_time, resp_code, resp_json)
+        values (#{id,jdbcType=INTEGER},
+        #{reqAddr,jdbcType=VARCHAR},
+        #{reqTime,jdbcType=TIMESTAMP},
+        #{respCode,jdbcType=VARCHAR},
+        #{respJson,jdbcType=VARCHAR});
+    </insert>
+    
+</mapper>
