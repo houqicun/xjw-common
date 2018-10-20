@@ -22,5 +22,11 @@
       WHERE id
         IN ( SELECT role_id FROM mgmt_user_role WHERE user_id = #{userId} )
     </select>
+
+    <select id="getRoleList" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM mgmt_role
+    </select>
     
 </mapper>

@@ -22,5 +22,11 @@
       WHERE user_name = #{userName}
         AND password = #{password}
     </select>
-    
+
+    <select id="getUserList" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM mgmt_user
+    </select>
+
 </mapper>

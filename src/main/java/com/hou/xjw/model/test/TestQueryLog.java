@@ -13,6 +13,8 @@ public class TestQueryLog {
     private Date reqTime;
     private String respCode;
     private String respJson;
+    private Date startTime;
+    private Date endTime;
 
     public Integer getId() {
         return id;
@@ -52,6 +54,22 @@ public class TestQueryLog {
 
     public void setRespJson(String respJson) {
         this.respJson = respJson;
+    }
+
+    public Date getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(Date startTime) {
+        this.startTime = startTime;
+    }
+
+    public Date getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(Date endTime) {
+        this.endTime = endTime;
     }
 
     @Override

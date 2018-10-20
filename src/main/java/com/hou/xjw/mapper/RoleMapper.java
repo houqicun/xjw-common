@@ -10,4 +10,6 @@ public interface RoleMapper {
 
     List<Role> getRoleByUserId(Integer userId);
 
+    List<Role> getRoleList();
+
 }

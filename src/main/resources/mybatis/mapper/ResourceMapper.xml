@@ -12,18 +12,33 @@
         <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
         <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
         <result column="op_user" jdbcType="VARCHAR" property="opUser" />
+        <result column="icon" jdbcType="VARCHAR" property="icon" />
     </resultMap>
 
     <sql id="Base_Column_List">
-      id, resource_name, resource_exp, url, parent_id, create_time, update_time, op_user
+      id, resource_name, resource_exp, url, type_id, parent_id, create_time, update_time, op_user, icon
     </sql>
 
     <select id="getResourceByRoleId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
         SELECT
-        id, resource_name, resource_exp, url, parent_id, create_time, update_time, op_user
+        id, resource_name, resource_exp, url, type_id, parent_id, create_time, update_time, op_user, icon
         FROM mgmt_Resource
         WHERE id
         IN ( SELECT resource_id FROM mgmt_role_resource WHERE role_id = #{roleId} )
     </select>
-    
+
+    <select id="getMenuByRoleId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM mgmt_Resource
+        WHERE id
+        IN ( SELECT resource_id FROM mgmt_role_resource WHERE role_id = #{roleId} AND type_id = 1)
+        ORDER BY id ASC;
+    </select>
+
+    <select id="getResourceList" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM mgmt_resource
+    </select>
 </mapper>

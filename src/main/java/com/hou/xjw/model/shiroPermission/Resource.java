@@ -17,6 +17,7 @@ public class Resource {
     private Date createTime;
     private Date updateTime;
     private String opUser;
+    private String icon;
 
     public Integer getId() {
         return id;
@@ -90,6 +91,14 @@ public class Resource {
         this.opUser = opUser;
     }
 
+    public String getIcon() {
+        return icon;
+    }
+
+    public void setIcon(String icon) {
+        this.icon = icon;
+    }
+
     @Override
     public String toString() {
         return "Resource{" +
@@ -102,6 +111,7 @@ public class Resource {
                 ", createTime=" + createTime +
                 ", updateTime=" + updateTime +
                 ", opUser='" + opUser + '\'' +
+                ", icon='" + icon + '\'' +
                 '}';
     }
 }
